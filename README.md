@@ -1,24 +1,6 @@
-# README
+# Private Events
+This project was created for the purpose of learning how to use `ActiveRecord` queries and associations.
+The app allows creating users and events where users can host and/or RSVP to multiple events.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Requirements
+- Requirements: Ruby v3.1.2, Rails v7.0.4
