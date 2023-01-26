@@ -7,9 +7,10 @@ class Users::SessionsController < Devise::SessionsController
   def show
     # Print the datetime in EDT zone.
     Time.zone = 'Eastern Time (US & Canada)'
-
-    @user = User.where(id: params[:id])
-    @hosted_events = Event.all
+    @user_hosted_events = {}
+    User.where('users.id' => params[:id]).includes(:hosted_events).each do |user|
+      @user_hosted_events[user.name] = user.hosted_events.map { |event| event }
+    end
   end
 
   # GET /resource/sign_in
