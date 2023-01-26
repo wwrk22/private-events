@@ -5,6 +5,9 @@ class Users::SessionsController < Devise::SessionsController
 
   # GET /users/:id
   def show
+    # Print the datetime in EDT zone.
+    Time.zone = 'Eastern Time (US & Canada)'
+
     @user = User.where(id: params[:id])
     @hosted_events = Event.all
   end

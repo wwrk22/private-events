@@ -10,7 +10,7 @@
   <h4>Events I'm hosting</h4>
   <ul>
     <% @hosted_events.each do |e| %>
-      <!-- <li><%= "#{e.name} @#{e.location}, on #{e.event_date}" %></li> -->
+      <li><%= "#{e.name} @#{e.event_location}, on #{e.event_date}" %></li>
     <% end %>
   </ul>
 </div>
