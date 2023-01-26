@@ -12,13 +12,20 @@
 
   <body>
     <%# Devise uses notice and alert as flash messages. %>
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
+    <div>
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+    </div>
 
     <%= yield %>
+
+    <%# User sign-out %>
+    <div>
+      <%= link_to('Sign out', destroy_user_session_path, data: { turbo_method: :delete }) %>
+    </div>
   </body>
 </html>
