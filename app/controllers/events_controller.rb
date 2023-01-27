@@ -32,7 +32,6 @@ class EventsController < ApplicationController
   def show
     result = User.select('users.name').where('users.id' => @event.host_id)
     @host_name = result[0].name
-    puts "give me the host name: #{@host_name}"
   end
 
   private # ===========================================================================================================
