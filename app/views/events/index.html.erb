@@ -2,10 +2,12 @@
 
 <div>
   <% @events.each do |event| %>
-    <%= render event, host_name: @host_name %>
+    <%= render event, host_name: event.host.name %>
     
     <div>
       <%= link_to "See details", event %>
     </div>
+    <br />
+    <br />
   <% end %>
 </div>
