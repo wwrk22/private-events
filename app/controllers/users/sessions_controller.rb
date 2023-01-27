@@ -4,7 +4,6 @@ class Users::SessionsController < Devise::SessionsController
 
   before_action :set_user, only: [:show]
 
-
   # GET /users/:id
   def show
     if @user
@@ -29,7 +28,7 @@ class Users::SessionsController < Devise::SessionsController
   # def create
   #   super
   # end
-
+  
   # DELETE /resource/sign_out
   # def destroy
   #   super
@@ -44,10 +43,10 @@ class Users::SessionsController < Devise::SessionsController
     # Strings and nil are converted to 0 UNLESS the string starts with a number, in which case the conversion will
     # work up until the first non-numeric character.
     # e.g. '123abc'.to_i # -> 123
-    if current_user
+    if user_signed_in?(current_user)
       id = current_user.id
     else
-      puts "Sign in to see your hosted events."
+      puts 'Sign in to see your events.'
     end
 
     if User.exists?(id) # Check validity of ID
