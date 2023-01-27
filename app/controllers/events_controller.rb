@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params())
 
-    if user_signed_in?(current_user)
+    if user_signed_in?
       @event.host_id = current_user.id
     else
       # Event.host_id is left as nil for now.

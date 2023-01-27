@@ -43,7 +43,7 @@ class Users::SessionsController < Devise::SessionsController
     # Strings and nil are converted to 0 UNLESS the string starts with a number, in which case the conversion will
     # work up until the first non-numeric character.
     # e.g. '123abc'.to_i # -> 123
-    if user_signed_in?(current_user)
+    if user_signed_in?
       id = current_user.id
     else
       puts 'Sign in to see your events.'
