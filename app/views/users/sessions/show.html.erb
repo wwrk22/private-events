@@ -1,20 +1,18 @@
 <% content_for :head do %>
-  <title><%= @user_hosted_events.keys.first %></title>
+  <title><%= @user.name %></title>
 <% end %>
 
 <div>
-  <h3><%= "Hello, #{@user_hosted_events.keys.first}!" %></h3>
+  <h3><%= "Hello, #{@user.name}!" %></h3>
 </div>
 
 <div>
   <h4>Events I'm hosting</h4>
   <ul>
-    <% @user_hosted_events.values.each do |events| %>
-      <% events.each do |event| %>
-        <li>
-          <%= "#{event.name} @#{event.event_location}, on #{event.event_date}" %>
-        </li>
-      <% end %>
+    <% @hosted_events.each do |event| %>
+      <li>
+        <%= "#{event.name} @#{event.event_location}, on #{event.event_date}" %>
+      </li>
     <% end %>
   </ul>
 </div>

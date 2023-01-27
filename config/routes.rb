@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # Devise User
   devise_scope :user do
-    get 'users/:id', to: 'users/sessions#show'
+    get 'my_info', to: 'users/sessions#show'
   end
 
   devise_for :users, controllers: { sessions: 'users/sessions' }
