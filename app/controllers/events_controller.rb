@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+
+  before_action :set_event, only: [:show]
+
   def index
   end
 
@@ -26,7 +29,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    
+
   end
 
   private # ===========================================================================================================
@@ -35,7 +38,9 @@ class EventsController < ApplicationController
     params.require(:event).permit(:name, :event_date, :event_location)
   end
 
+  # Set the Event with given id for currently signed-in User.
   def set_event
+    # This is a form of validation to make sure only an integer is used as the id in the query below.
     id = params[:id].to_i
 
     if id != 0
