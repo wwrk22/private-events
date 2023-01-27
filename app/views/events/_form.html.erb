@@ -19,7 +19,7 @@
 
   <div>
     <%= form.label :event_date %><br />
-    <%= form.datetime_local_field :event_date %>
+    <%= form.datetime_select :event_date %>
 
     <% event.errors.full_messages_for(:event_date).each do |message| %>
       <div><%= message %></div>

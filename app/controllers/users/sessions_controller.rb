@@ -13,8 +13,9 @@ class Users::SessionsController < Devise::SessionsController
       # This won't execute a query since the associated :hosted_events has already been loaded into memory.
       # In #set_user, #includes calls #preload to query the :hosted_events belonging to @user.
       @hosted_events = @user.hosted_events
-    else # @user == nil
-      # Render an error page.
+    else # User is not signed in.
+      # For now, just redirect to avoid crashing.
+      render :index, status: :ok
     end
   end
 
