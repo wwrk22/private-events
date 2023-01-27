@@ -3,5 +3,10 @@
 <%= render @event, host_name: @host_name %>
 
 <div>
+  <%# The button_to form submits a POST request by default. %>
+  <%= button_to "Attend this event", attendances_path, params: { event_id: @event.id } %>
+</div>
+
+<div>
   <%= link_to "Back to all events", events_path %>
 </div>
