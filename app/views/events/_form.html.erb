@@ -1,0 +1,38 @@
+<%# We can use the short-style of #form_with here because #resources have been made for the Event model. %>
+<%# Otherwise, we'd have to use the long-style like so: %>
+<%# e.g. form_with_model: event, url: events_path %>
+<%# e.g. form_with_model: event, url: event_path(event), method: 'patch' %>
+<%# Rails can figure out the URL and request method because Event model has its RESTful routes with #resources %>
+<%# coupled with the fact that event.persisted? tells it whether an Event is new or existing in the DB. %>
+
+<%# %>
+<%= form_with model: event do |form| %>
+
+  <div>
+    <%= form.label :name %><br />
+    <%= form.text_field :name %>
+
+    <% event.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :event_date %><br />
+    <%= form.datetime_local_field :event_date %>
+
+    <% event.errors.full_messages_for(:event_date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :event_location %><br />
+    <%= form.text_field :event_location %>
+
+    <% event.errors.full_messages_for(:event_location).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+<% end %>
