@@ -29,7 +29,9 @@ class EventsController < ApplicationController
   end
 
   def show
-
+    result = User.select('users.name').where('users.id' => @event.host_id)
+    @host_name = result[0].name
+    puts "give me the host name: #{@host_name}"
   end
 
   private # ===========================================================================================================
@@ -44,9 +46,15 @@ class EventsController < ApplicationController
     id = params[:id].to_i
 
     if id != 0
-      @event = Event.where('events.id' => id)
+      result = Event.where('events.id' => id)
+
+      if result.size == 1
+        @event = result[0]
+      else
+        # Error: Event with given id does not exist.
+      end
     else
-      # Error a string or nil was given as the id.
+      # Error: a string or nil was given as the id.
     end
   end
 end
