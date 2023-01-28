@@ -7,12 +7,35 @@
 </div>
 
 <div>
-  <h4>Events I'm hosting</h4>
-  <ul>
-    <% @hosted_events.each do |event| %>
-      <li>
-        <%= "#{event.name} @#{event.event_location}, on #{event.event_date}" %>
-      </li>
-    <% end %>
-  </ul>
+  <div>
+    <h4>Events I'm hosting</h4>
+  </div>
+  
+  <div>
+    <ul>
+      <% @hosted_events.each do |event| %>
+        <%# This is a candidate for replacement with the partial _event by moving the partial to a shared directory. %>
+        <li>
+          <%= "#{event.name} @#{event.event_location}, on #{event.event_date}" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div>
+  <div>
+    <h4>Events I'm attending</h4>
+  </div>
+
+  <div>
+    <ul>
+      <% @attending_events.each do |event| %>
+        <%# This is a candidate for replacement with the partial _event by moving the partial to a shared directory. %>
+        <li>
+          <%= "#{event.name} @#{event.event_location}, on #{event.event_date}" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
