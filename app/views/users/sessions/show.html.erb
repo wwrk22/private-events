@@ -1,9 +1,9 @@
 <% content_for :head do %>
-  <title><%= @user.name %></title>
+  <title><%= current_user.name %></title>
 <% end %>
 
 <div>
-  <h3><%= "Hello, #{@user.name}!" %></h3>
+  <h3><%= "Hello, #{current_user.name}!" %></h3>
 </div>
 
 <%# Hosted events %>
@@ -26,18 +26,51 @@
 
 <%# Attending events %>
 <div>
+  
   <div>
     <h4>Events I'm attending</h4>
   </div>
 
+  <%# Events that have not occurred yet. %>
   <div>
-    <ul>
-      <% @attendances.each do |attendance| %>
-        <%# This is a candidate for replacement with the partial _event by moving the partial to a shared directory. %>
-        <li>
-          <%= "#{attendance.attended_event.name} @#{attendance.attended_event.event_location}, on #{attendance.attended_event.event_date}" %>
-        </li>
-      <% end %>
-    </ul>
+    <div>
+      <h5>Upcoming</h5>
+    </div>
+
+    <div>
+      <ul>
+        <% @attendances.each do |attendance| %>
+          <%# This is a candidate for replacement with the partial _event by moving the partial to a shared directory. %>
+          <% event = attendance.attended_event %>
+          <% if event.event_date > Time.zone.now %>
+            <li>
+              <%= "#{event.name} @#{event.event_location}, on #{event.event_date}" %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
   </div>
+
+  <%# Events that have happened already. %>
+  <div>
+    <div>
+      <h5>Past</h5>
+    </div>
+
+    <div>
+      <ul>
+        <% @attendances.each do |attendance| %>
+          <%# This is a candidate for replacement with the partial _event by moving the partial to a shared directory. %>
+          <% event = attendance.attended_event %>
+          <% if event.event_date <= Time.zone.now %>
+            <li>
+              <%= "#{event.name} @#{event.event_location}, on #{event.event_date}" %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
 </div>
