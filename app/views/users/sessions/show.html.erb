@@ -6,6 +6,7 @@
   <h3><%= "Hello, #{@user.name}!" %></h3>
 </div>
 
+<%# Hosted events %>
 <div>
   <div>
     <h4>Events I'm hosting</h4>
@@ -23,6 +24,7 @@
   </div>
 </div>
 
+<%# Attending events %>
 <div>
   <div>
     <h4>Events I'm attending</h4>
@@ -30,10 +32,10 @@
 
   <div>
     <ul>
-      <% @attending_events.each do |event| %>
+      <% @attendances.each do |attendance| %>
         <%# This is a candidate for replacement with the partial _event by moving the partial to a shared directory. %>
         <li>
-          <%= "#{event.name} @#{event.event_location}, on #{event.event_date}" %>
+          <%= "#{attendance.attended_event.name} @#{attendance.attended_event.event_location}, on #{attendance.attended_event.event_date}" %>
         </li>
       <% end %>
     </ul>

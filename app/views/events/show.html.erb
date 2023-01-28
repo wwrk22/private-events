@@ -3,7 +3,7 @@
 <%= render @event, host_name: @host_name %>
 
 <div>
-  <h4>List of people you're going to look through to decide if you want to attend.</h4>
+  <h4>Who's coming?</h4>
   <ul>
     <% @attendances.each do |attendance| %>
       <li><%= attendance.attendant.name %></li>
