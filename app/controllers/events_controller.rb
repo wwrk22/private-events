@@ -30,8 +30,12 @@ class EventsController < ApplicationController
   end
 
   def show
+    # Get the event's host name.
     result = User.select('users.name').where('users.id' => @event.host_id)
     @host_name = result[0].name
+
+    # Get all the event's attendants (should've really used the word "attendees" instead).
+    @attendances = Attendance.where('attendances.attended_event_id' => @event.id).includes(:attendant)
   end
 
   private # ===========================================================================================================

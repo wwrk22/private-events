@@ -3,6 +3,15 @@
 <%= render @event, host_name: @host_name %>
 
 <div>
+  <h4>List of people you're going to look through to decide if you want to attend.</h4>
+  <ul>
+    <% @attendances.each do |attendance| %>
+      <li><%= attendance.attendant.name %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
   <%# The button_to form submits a POST request by default. %>
   <%= button_to "Attend this event", attendances_path, params: { event_id: @event.id } %>
 </div>
