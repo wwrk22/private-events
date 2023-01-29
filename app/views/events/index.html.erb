@@ -25,7 +25,7 @@
 
   <div>
     <% @past_events.each do |event| %>
-      <%= render event, host_name: event.host_name %>
+      <%= render event, host_name: event.host.name %>
 
       <div>
         <%= link_to "See details", event %>

@@ -3,7 +3,6 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show]
 
   def index
-    @events = Event.all.includes(:host)
     @past_events = Event.past_events
     @future_events = Event.future_events
   end
