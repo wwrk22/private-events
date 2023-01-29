@@ -62,4 +62,5 @@ class EventsController < ApplicationController
       # Error: a string or nil was given as the id.
     end
   end
+
 end
