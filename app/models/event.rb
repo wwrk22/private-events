@@ -12,12 +12,12 @@ class Event < ApplicationRecord
     
     # Return all events whose date and time have passed.
     def past_events
-      
+      Event.where('events.event_date <= ?', Time.zone.now)
     end
 
     # Return all events whose date and time have NOT passed.
     def future_events
-
+      Event.where('events.event_date > ?', Time.zone.now)
     end
 
   end

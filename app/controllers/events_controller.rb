@@ -4,6 +4,8 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all.includes(:host)
+    @past_events = Event.past_events
+    @future_events = Event.future_events
   end
 
   def new

@@ -1,13 +1,37 @@
 <h3>All Events</h3>
 
 <div>
-  <% @events.each do |event| %>
-    <%= render event, host_name: event.host.name %>
-    
-    <div>
-      <%= link_to "See details", event %>
-    </div>
-    <br />
-    <br />
-  <% end %>
+  <div>
+    <h4>Upcoming Events</h4>
+  </div>
+
+  <div>
+    <% @future_events.each do |event| %>
+      <%= render event, host_name: event.host.name %>
+      
+      <div>
+        <%= link_to "See details", event %>
+      </div>
+      <br />
+      <br />
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <div>
+    <h4>Past Events</h4>
+  </div>
+
+  <div>
+    <% @past_events.each do |event| %>
+      <%= render event, host_name: event.host_name %>
+
+      <div>
+        <%= link_to "See details", event %>
+      </div>
+      <br />
+      <br />
+    <% end %>
+  </div>
 </div>
